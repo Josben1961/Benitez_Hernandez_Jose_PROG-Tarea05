@@ -1,1 +1,2 @@
 # Benitez_Hernandez_Jose_PROG-Tarea05
+La tarea va a consistir en modelar la gestión de un negocio de alquiler de vehículos. Nuestro nuevo cliente se dedica a alquilar vehículos a sus clientes. En una primera fase, el cliente nos pide que sólo contemplemos el alquiler de turismos, de los que guarda su matrícula, marca, modelo y cilindrada. Para los clientes guarda información sobre su nombre, dirección, localidad y código postal y también le asigna un identificador único a cada cliente.
