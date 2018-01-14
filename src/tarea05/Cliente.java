@@ -90,5 +90,13 @@ public class Cliente {
 		}
 
 	}
+	// Método toString que representa al cliente
 
+	@Override
+	public String toString() {
+		return "Cliente [nombre=" + nombre + ", dni=" + dni + ", direccion=" + direccion + ", localidad=" + localidad
+				+ ", codigoPostal=" + codigoPostal + ", identificador=" + identificador + ", numClientes=" + numClientes
+				+ ", cliente=" + cliente + "]";
+	}
+	
 }
