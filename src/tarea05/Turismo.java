@@ -62,9 +62,14 @@ public class Turismo {
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
-
-
 	
+	
+	@Override
+	public String toString() {
+		return "Turismo [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", cilindrada="
+				+ cilindrada + ", disponible=" + disponible + "]";
+	}
+
 	// Método para comprobar la matrícula introducida.
 	// Matrícula correcta: Cuatro números, espacio y tres letras mayúsculas
 	// (excluyendo vocales)
