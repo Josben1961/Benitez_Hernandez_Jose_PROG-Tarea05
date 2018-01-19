@@ -3,10 +3,7 @@ package tarea05;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import utilidades.Entrada;
-
 public class Cliente {
-
 	private String nombre;
 	private String dni;
 	private String direccion;
@@ -14,8 +11,6 @@ public class Cliente {
 	private String codigoPostal;
 	private int identificador;
 	private int numClientes;
-	// Objeto de la clase Cliente
-	Cliente cliente = new Cliente(nombre, dni, direccion, localidad, codigoPostal);
 
 	// Constructor con los 5 parámetros
 	public Cliente(String nombre, String dni, String direccion, String localidad, String codigoPostal) {
@@ -24,6 +19,17 @@ public class Cliente {
 		this.direccion = direccion;
 		this.localidad = localidad;
 		this.codigoPostal = codigoPostal;
+		if (compruebaDni(dni)) {
+			this.dni = dni;
+		} else {
+			throw new ExcepcionAlquilerVehiculos("El formato del DNI es erroneo");
+		}
+
+		if (compruebaCodigoPostal(codigoPostal)) {
+			this.codigoPostal = codigoPostal;
+		} else {
+			throw new ExcepcionAlquilerVehiculos("El formato del Código Postal es erroneo");
+		}
 	}
 
 	// Constructor copia de la clase Cliente
@@ -66,28 +72,22 @@ public class Cliente {
 	}
 
 	// Método para comprobar el código postal introducido
-	private void compruebaCodigoPostal() throws ExcepcionAlquilerVehiculos {
+	private boolean compruebaCodigoPostal(String codigoPostal) throws ExcepcionAlquilerVehiculos {
 		Pattern patron = Pattern.compile("0[1-9][0-9]{3}|[1-4][0-9]{4}|5[0-2][0-9]{3}");
 		Matcher emparejador;
 
 		emparejador = patron.matcher(codigoPostal);
-		// Lanzamos excepción si el código Postal es erroneo
-		if (!emparejador.matches()) {
-			throw new ExcepcionAlquilerVehiculos("El formato del Código Postal es erroneo");
-		}
+		return emparejador.matches();
 
 	}
 
 	// Método para comprobar el DNI introducido
-	private void compruebaDni() throws ExcepcionAlquilerVehiculos {
-		Pattern patron = Pattern.compile("[0-9A-Z][0-9]{7}[A-Z]");
+	private boolean compruebaDni(String dni) throws ExcepcionAlquilerVehiculos {
+		Pattern patron = Pattern.compile("[0-9]{8}[A-Z]");
 		Matcher emparejador;
 
 		emparejador = patron.matcher(dni);
-		// Lanzamos excepción si el DNI no es correcto
-		if (!emparejador.matches()) {
-			throw new ExcepcionAlquilerVehiculos(" El formato del DNI es erroneo");
-		}
+		return emparejador.matches();
 
 	}
 	// Método toString que representa al cliente
@@ -96,7 +96,8 @@ public class Cliente {
 	public String toString() {
 		return "Cliente [nombre=" + nombre + ", dni=" + dni + ", direccion=" + direccion + ", localidad=" + localidad
 				+ ", codigoPostal=" + codigoPostal + ", identificador=" + identificador + ", numClientes=" + numClientes
-				+ ", cliente=" + cliente + "]";
+				+ "]";
 	}
-	
+
+
 }
