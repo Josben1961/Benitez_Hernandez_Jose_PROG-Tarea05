@@ -21,6 +21,11 @@ public class Turismo {
 		this.marca = marca;
 		this.modelo = modelo;
 		this.cilindrada = cilindrada;
+		if (compruebaMatricula(matricula)) {
+			this.matricula = matricula;
+		} else {
+			throw new ExcepcionAlquilerVehiculos("La matrícula no es correcta");
+		}
 
 	}
 
@@ -68,16 +73,12 @@ public class Turismo {
 	// Método para comprobar la matrícula introducida.
 	// Matrícula correcta: Cuatro números, espacio y tres letras mayúsculas
 	// (excluyendo vocales)
-	private void compruebaMatricula() throws ExcepcionAlquilerVehiculos {
+	private boolean compruebaMatricula(String matricula) throws ExcepcionAlquilerVehiculos {
 		Pattern patron = Pattern.compile("([0-9]{4})+ ([BCDFGHJKLMNPQRSTVWXYZ]{3})");
 		Matcher emparejador;
 
 		emparejador = patron.matcher(matricula);
-		// Lanzamos excepción si la matrícula es erronea
-		if (!emparejador.matches()) {
-			throw new ExcepcionAlquilerVehiculos("El formato de la matrícula es erroneo");
-		}
-		
+		return emparejador.matches();
 	}
 	private void compruebaCilindrada() throws ExcepcionAlquilerVehiculos {
 		if (cilindrada<0) {
