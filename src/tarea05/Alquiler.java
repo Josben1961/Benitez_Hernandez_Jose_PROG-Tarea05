@@ -42,5 +42,10 @@ public class Alquiler {
 	public int getDias() {
 		return dias;
 	}
-			
+	
+	public double getPrecio () {
+		return 30 * dias + (turismo.getCilindrada()/100);
+	}
+	
+
 }
