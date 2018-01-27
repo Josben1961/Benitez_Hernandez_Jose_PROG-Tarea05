@@ -103,4 +103,21 @@ public class AlquilerVehiculos {
 			return null;
 	}
 
+	// Método para agregar turismos si se puede.
+	public void addTurismo(Turismo turismo) {
+		int posicion = 0;
+		boolean posicionArray = false;
+		for (int i = 0; i < turismos.length; i++) {
+			if (turismos[i] == null) {
+				posicionArray = true;
+				posicion = i;
+			} else if (turismos[i].getMatricula().equals(turismo.getMatricula())) {
+				throw new ExcepcionAlquilerVehiculos("Este turismo ya existe.");
+			}
+		}
+		if (posicionArray)
+			turismos[posicion] = turismo;
+		else
+			throw new ExcepcionAlquilerVehiculos(" Almacén de turismos cumpleto.");
+	}
 }
