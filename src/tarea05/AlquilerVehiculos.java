@@ -118,6 +118,24 @@ public class AlquilerVehiculos {
 		if (posicionArray)
 			turismos[posicion] = turismo;
 		else
-			throw new ExcepcionAlquilerVehiculos(" Almacén de turismos cumpleto.");
+			throw new ExcepcionAlquilerVehiculos(" Almacén de turismos completo.");
+	}
+
+	// Método para borrar un turismo si este existe y sino, lanzar excepción.
+	public void delTurismo(String matricula) {
+		int posicion = 0;
+
+		for (int i = 0; i < turismos.length; i++) {
+			if (turismos[i] != null && turismos[i].getMatricula().equals(matricula)) {
+				posicion = i;
+
+				for (int j = posicion; j < turismos.length - 1; j++) {
+					turismos[j] = turismos[j + 1];
+				}
+				turismos[turismos.length - 1] = null;
+			} else {
+				throw new ExcepcionAlquilerVehiculos("Este turismo no existe.");
+			}
+		}
 	}
 }
