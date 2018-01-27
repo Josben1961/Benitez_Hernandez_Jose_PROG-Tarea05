@@ -12,15 +12,16 @@ public class Turismo {
 	private int cilindrada;
 	private boolean disponible;
 
-	// Objeto de la clase Turismo
-	Turismo turismo = new Turismo(matricula, marca, modelo, cilindrada);
-
 	// Constructor con cuatro parámetros
 	public Turismo(String matricula, String marca, String modelo, int cilindrada) {
 		this.matricula = matricula;
 		this.marca = marca;
 		this.modelo = modelo;
-		this.cilindrada = cilindrada;
+		if (cilindrada > 0) {
+			this.cilindrada = cilindrada;
+		} else {
+			throw new ExcepcionAlquilerVehiculos("Cilindrada no válida");
+		}
 		if (compruebaMatricula(matricula)) {
 			this.matricula = matricula;
 		} else {
@@ -55,7 +56,7 @@ public class Turismo {
 		return cilindrada;
 	}
 
-	public boolean isDisponible() {
+	public boolean getDisponible() {
 		return disponible;
 	}
 
@@ -74,16 +75,11 @@ public class Turismo {
 	// Matrícula correcta: Cuatro números, espacio y tres letras mayúsculas
 	// (excluyendo vocales)
 	private boolean compruebaMatricula(String matricula) throws ExcepcionAlquilerVehiculos {
-		Pattern patron = Pattern.compile("([0-9]{4})+ ([BCDFGHJKLMNPQRSTVWXYZ]{3})");
+		Pattern patron = Pattern.compile("([0-9]{4})+([BCDFGHJKLMNPQRSTVWXYZ]{3})");
 		Matcher emparejador;
 
 		emparejador = patron.matcher(matricula);
 		return emparejador.matches();
 	}
-	private void compruebaCilindrada() throws ExcepcionAlquilerVehiculos {
-		if (cilindrada<0) {
-			throw new ExcepcionAlquilerVehiculos("La cilindrada no puede ser menor que 0");
-		}
 
-	}
 }

@@ -19,12 +19,14 @@ public class Cliente {
 		this.direccion = direccion;
 		this.localidad = localidad;
 		this.codigoPostal = codigoPostal;
+		// Validación DNI
 		if (compruebaDni(dni)) {
 			this.dni = dni;
 		} else {
 			throw new ExcepcionAlquilerVehiculos("El formato del DNI es erroneo");
 		}
 
+		// Validación código postal
 		if (compruebaCodigoPostal(codigoPostal)) {
 			this.codigoPostal = codigoPostal;
 		} else {
@@ -67,10 +69,6 @@ public class Cliente {
 		return identificador;
 	}
 
-	public int getNumClientes() {
-		return numClientes;
-	}
-
 	// Método para comprobar el código postal introducido
 	private boolean compruebaCodigoPostal(String codigoPostal) throws ExcepcionAlquilerVehiculos {
 		Pattern patron = Pattern.compile("0[1-9][0-9]{3}|[1-4][0-9]{4}|5[0-2][0-9]{3}");
@@ -98,6 +96,5 @@ public class Cliente {
 				+ ", codigoPostal=" + codigoPostal + ", identificador=" + identificador + ", numClientes=" + numClientes
 				+ "]";
 	}
-
 
 }
