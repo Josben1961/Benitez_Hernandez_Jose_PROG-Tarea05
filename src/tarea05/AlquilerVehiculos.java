@@ -156,4 +156,20 @@ public class AlquilerVehiculos {
 		if (posicionOpen)
 			alquileres[posicion] = new Alquiler(cliente, turismo);
 	}
+
+	// Método para cerrar un alquiler
+	public void closeAlquiler(Cliente cliente, Turismo turismo) {
+		int posicion = 0;
+		boolean posicionClose = false;
+
+		for (int i = 0; i < alquileres.length; i++) {
+			if (alquileres[i].getCliente() == cliente && alquileres[i].getTurismo() == turismo) {
+				posicionClose = true;
+				posicion = i;
+			}
+		}
+
+		if (posicionClose)
+			alquileres[posicion].close();
+	}
 }
