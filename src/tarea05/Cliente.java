@@ -10,7 +10,7 @@ public class Cliente {
 	private String localidad;
 	private String codigoPostal;
 	private int identificador;
-	private int numClientes;
+	private static int numClientes=0;
 
 	// Constructor con los 5 parámetros
 	public Cliente(String nombre, String dni, String direccion, String localidad, String codigoPostal) {
@@ -19,6 +19,8 @@ public class Cliente {
 		this.direccion = direccion;
 		this.localidad = localidad;
 		this.codigoPostal = codigoPostal;
+		numClientes++;
+		identificador = numClientes;
 		// Validación DNI
 		if (compruebaDni(dni)) {
 			this.dni = dni;

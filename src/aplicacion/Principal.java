@@ -12,8 +12,8 @@ public class Principal {
 	public static void main(String[] args) {
 
 		AlquilerVehiculos miAlquiler = new AlquilerVehiculos();
-		Cliente cliente1 = new Cliente("aaaas", "11111111A", "950111111", "Almería", "04000");
-		Cliente cliente2 = new Cliente("bbbbs", "22222222B", "950222222", "Almería", "04000");
+		Cliente cliente1 = new Cliente("aaaas", "11111111A", "cazalla", "Almería", "04000");
+		Cliente cliente2 = new Cliente("bbbbs", "22222222B", "cabo", "Almería", "04000");
 		miAlquiler.addCliente(cliente1);
 		miAlquiler.addCliente(cliente2);
 		miAlquiler.delCliente("11111111A");
@@ -58,7 +58,7 @@ public class Principal {
 			do {
 				System.out.print("\nElige una opción (0-11): ");
 				opcion = Entrada.entero();
-			} while (opcion < 0 || opcion > 11);
+			} while (opcion < 0 || opcion > 12);
 			switch (opcion) {
 			case 1:
 				Cliente nuevoCliente = null;
@@ -203,7 +203,7 @@ public class Principal {
 				else {
 					try {
 						miAlquiler.closeAlquiler(clienteBuscado, turismoBuscado);
-						System.out.println("Trabajo cerrado satisfactoriamente");
+						System.out.println("Alquiler cerrado satisfactoriamente");
 					} catch (ExcepcionAlquilerVehiculos e) {
 						System.out.printf("ERROR: %s%n%n", e.getMessage());
 					}
