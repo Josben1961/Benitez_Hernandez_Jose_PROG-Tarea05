@@ -29,39 +29,59 @@ public class AlquilerVehiculos {
 		return alquileres;
 	}
 
-	// Método get de Cliente con un parámetro (dni) para saber si existe este cliente.
-	public Cliente getCliente (String dni) {
+	// Método get de Cliente con un parámetro (dni) para saber si existe este
+	// cliente.
+	public Cliente getCliente(String dni) {
 		int posicion = 0;
 		boolean clienteDni = false;
 		for (int i = 0; i < clientes.length; i++) {
-			if(clientes[i].getDni().equals(dni)) {
+			if (clientes[i].getDni().equals(dni)) {
 				clienteDni = true;
 				posicion = i;
 			}
 		}
-		if(clienteDni) {
+		if (clienteDni) {
 			return clientes[posicion];
-		}else {
+		} else {
 			return null;
 		}
-	
+
 	}
-	
+
 	// Méetodo para agregar clientes
 	public void addCliente(Cliente cliente) {
 		int posicion = 0;
 		boolean posicionArray = false;
-		for (int i=0; i<clientes.length; i++) {
-			if(clientes[i] == null){
+		for (int i = 0; i < clientes.length; i++) {
+			if (clientes[i] == null) {
 				posicionArray = true;
 				posicion = i;
-			}else if (clientes[i].getDni().equals(cliente.getDni())) {
-				throw new ExcepcionAlquilerVehiculos ("Este cliente ya existe.");
+			} else if (clientes[i].getDni().equals(cliente.getDni())) {
+				throw new ExcepcionAlquilerVehiculos("Este cliente ya existe.");
 			}
 		}
-		if(posicionArray)
+		if (posicionArray)
 			clientes[posicion] = cliente;
 		else
-			throw new ExcepcionAlquilerVehiculos ("No se admiten más clientes.");
+			throw new ExcepcionAlquilerVehiculos("No se admiten más clientes.");
 	}
+
+	// Método para borrar clientes (Si existe).
+	public void delCliente(String dni) {
+		int posicion = 0;
+
+		for (int i = 0; i < clientes.length; i++) {
+			if (clientes[i] != null && clientes[i].getDni().equals(dni)) {
+				posicion = i;
+
+				for (int c = posicion; c < clientes.length - 1; c++) {
+					clientes[c] = clientes[c + 1];
+				}
+				clientes[clientes.length - 1] = null;
+			} else {
+				throw new ExcepcionAlquilerVehiculos("No existe este cliente.");
+			}
+		}
+	}
+
 }
