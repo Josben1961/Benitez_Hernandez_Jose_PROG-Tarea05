@@ -134,7 +134,7 @@ public class AlquilerVehiculos {
 				}
 				turismos[turismos.length - 1] = null;
 			} else {
-				throw new ExcepcionAlquilerVehiculos("Este turismo no existe.");
+				throw new ExcepcionAlquilerVehiculos("El turismo introducido no existe.");
 			}
 		}
 	}
