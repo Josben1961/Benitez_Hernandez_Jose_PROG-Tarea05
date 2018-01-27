@@ -29,8 +29,7 @@ public class AlquilerVehiculos {
 		return alquileres;
 	}
 
-	// Método get de Cliente con un parámetro (dni) para saber si existe este
-	// cliente
+	// Método get de Cliente con un parámetro (dni) para saber si existe este cliente.
 	public Cliente getCliente (String dni) {
 		int posicion = 0;
 		boolean clienteDni = false;
@@ -46,5 +45,23 @@ public class AlquilerVehiculos {
 			return null;
 		}
 	
+	}
+	
+	// Méetodo para agregar clientes
+	public void addCliente(Cliente cliente) {
+		int posicion = 0;
+		boolean posicionArray = false;
+		for (int i=0; i<clientes.length; i++) {
+			if(clientes[i] == null){
+				posicionArray = true;
+				posicion = i;
+			}else if (clientes[i].getDni().equals(cliente.getDni())) {
+				throw new ExcepcionAlquilerVehiculos ("Este cliente ya existe.");
+			}
+		}
+		if(posicionArray)
+			clientes[posicion] = cliente;
+		else
+			throw new ExcepcionAlquilerVehiculos ("No se admiten más clientes.");
 	}
 }
