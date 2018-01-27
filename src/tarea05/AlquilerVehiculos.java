@@ -88,19 +88,18 @@ public class AlquilerVehiculos {
 	// Turismo.
 	public Turismo getTurismo(String matricula) {
 		int posicion = 0;
-		boolean turismoMatricula = false;
-
-		for (int i = 0; i < turismos.length; i++) {
-			if (turismos[i].getMatricula().equals(matricula)) {
-				turismoMatricula = true;
-				posicion = i;
-			}
+		boolean encontrado = false;
+		while (posicion < turismos.length && !encontrado) {
+			if (turismos[posicion] != null && turismos[posicion].getMatricula().equals(matricula))
+				encontrado = true;
+			else
+				posicion++;
 		}
-
-		if (turismoMatricula)
+		if (encontrado)
 			return turismos[posicion];
 		else
 			return null;
+
 	}
 
 	// Método para agregar turismos si se puede.
