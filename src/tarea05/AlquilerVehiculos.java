@@ -48,7 +48,7 @@ public class AlquilerVehiculos {
 
 	}
 
-	// Méetodo para agregar clientes
+	// Método para agregar clientes
 	public void addCliente(Cliente cliente) {
 		int posicion = 0;
 		boolean posicionArray = false;
@@ -82,6 +82,25 @@ public class AlquilerVehiculos {
 				throw new ExcepcionAlquilerVehiculos("No existe este cliente.");
 			}
 		}
+	}
+
+	// Método get de Turismo con un parámetro (matricula) para saber si existe este
+	// Turismo.
+	public Turismo getTurismo(String matricula) {
+		int posicion = 0;
+		boolean turismoMatricula = false;
+
+		for (int i = 0; i < turismos.length; i++) {
+			if (turismos[i].getMatricula().equals(matricula)) {
+				turismoMatricula = true;
+				posicion = i;
+			}
+		}
+
+		if (turismoMatricula)
+			return turismos[posicion];
+		else
+			return null;
 	}
 
 }
