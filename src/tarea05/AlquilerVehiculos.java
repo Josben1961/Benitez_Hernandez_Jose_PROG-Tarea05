@@ -66,7 +66,7 @@ public class AlquilerVehiculos {
 			throw new ExcepcionAlquilerVehiculos("No se admiten más clientes.");
 	}
 
-	// Método para borrar clientes (Si existe).
+	// Método para borrar un cliente (Si existe).
 	public void delCliente(String dni) {
 		int posicion = 0;
 
