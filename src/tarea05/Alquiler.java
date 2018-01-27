@@ -65,5 +65,4 @@ public class Alquiler {
 				+ ", PRECIO_DIA=" + PRECIO_DIA + ", cliente=" + cliente + ", turismo=" + turismo + ", disponible="
 				+ disponible + "]";
 	}
-
 }
