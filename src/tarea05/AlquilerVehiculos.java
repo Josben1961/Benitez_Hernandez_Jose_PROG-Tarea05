@@ -8,5 +8,12 @@ public class AlquilerVehiculos {
 	private Turismo[] turismos;
 	private Cliente[] clientes;
 	private Alquiler[] alquileres;
+	
+	// Constructor por defecto
+	public AlquilerVehiculos() {
+		turismos = new Turismo[MAX_TURISMOS];
+		clientes = new Cliente[MAX_CLIENTES];
+		alquileres = new Alquiler[MAX_ALQUILERES];
+	}
 
 }
