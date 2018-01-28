@@ -113,6 +113,7 @@ public class AlquilerVehiculos {
 				throw new ExcepcionAlquilerVehiculos("Ya existe un vehículo con esa matrícula");
 			else
 				posicion++;
+			turismo.setDisponible(true);
 		}
 		if (posicionEncontrada)
 			turismos[posicion] = turismo;
@@ -151,6 +152,7 @@ public class AlquilerVehiculos {
 				throw new ExcepcionAlquilerVehiculos("Ya existe un alquiler abierto para este vehículo");
 			else
 				posicion++;
+			turismo.setDisponible(false);
 		}
 		if (posicionEncontrada)
 			alquileres[posicion] = new Alquiler(cliente, turismo);
@@ -169,10 +171,12 @@ public class AlquilerVehiculos {
 				encontrado = true;
 			else
 				posicion++;
+			
 		}
 		if (encontrado)
 			alquileres[posicion].close();
-		else
+			
+			turismo.setDisponible(true);
 			throw new ExcepcionAlquilerVehiculos("No hay ningún alquiler abierto para ese vehículo");
 	}
 }
